@@ -1,4 +1,5 @@
 package br.com.cadastro.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +34,7 @@ public class Professional implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date birth;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "professional")
     private List<Contact> contacts;
 }

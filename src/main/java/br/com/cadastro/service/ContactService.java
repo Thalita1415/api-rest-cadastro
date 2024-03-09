@@ -9,5 +9,5 @@ public interface ContactService {
 
     ContactDTO getById(Integer id);
 
-    List<Contact> findAll();
+    List<ContactDTO> findAll();
 }
