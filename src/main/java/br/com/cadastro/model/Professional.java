@@ -22,8 +22,9 @@ public class Professional implements Serializable {
     private String name;
 
 
+    @Enumerated(EnumType.STRING)
     @Column(name ="office " ,  length = 20) // Define o tamanho máximo do campo cargo
-    private String office;
+    private Office office;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
