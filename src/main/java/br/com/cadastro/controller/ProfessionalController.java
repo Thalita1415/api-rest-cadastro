@@ -2,6 +2,7 @@ package br.com.cadastro.controller;
 import br.com.cadastro.dto.ProfessionalDTO;
 import br.com.cadastro.repository.ProfessionalRepository;
 import br.com.cadastro.service.ProfessionalService;
+import io.swagger.annotations.ApiOperation;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class ProfessionalController {
     @Autowired
     public ProfessionalRepository professionalRepository;
 
+    @ApiOperation("Obtém a lista de profissionais")
     @GetMapping
     public ResponseEntity<List<ProfessionalDTO>> getProfessionals(
             @RequestParam(required = false) String q,
@@ -35,6 +37,8 @@ public class ProfessionalController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @ApiOperation("Obtém a lista de profissionais por id")
     @GetMapping("/{id}")
     public ResponseEntity<ProfessionalDTO> getProfessionalById(@PathVariable Long id) {
         try {
@@ -45,6 +49,7 @@ public class ProfessionalController {
         }
     }
 
+    @ApiOperation("Insere um profissional")
     @PostMapping
     public ResponseEntity<String> createProfessional(@RequestBody ProfessionalDTO professionalDTO) {
         // Chama o serviço para processar a inserção
@@ -55,12 +60,14 @@ public class ProfessionalController {
                 .body("Sucesso profissional com id " + generatedId + " cadastrado");
     }
 
-    @PutMapping("/{professionalId}")
-    public ResponseEntity<String> updateProfessional(@PathVariable Integer professionalId, @RequestBody ProfessionalDTO professionalDTO) {
-        professionalService.put(professionalId, professionalDTO);
-        return new ResponseEntity<>("Sucesso profissional com id " + professionalId + " atualizado", HttpStatus.OK);
+    @ApiOperation("Atualiza os dados de um profissional")
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateProfessional(@PathVariable Integer id, @RequestBody ProfessionalDTO professionalDTO) {
+        professionalService.put(id, professionalDTO);
+        return new ResponseEntity<>("Sucesso profissional com id " + id + " atualizado", HttpStatus.OK);
     }
 
+    @ApiOperation("Realiza a deleção lógica de um profisssional")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProfessional(@PathVariable Integer id) {
         try {

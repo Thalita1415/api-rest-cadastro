@@ -2,6 +2,7 @@ package br.com.cadastro.controller;
 import br.com.cadastro.dto.ContactDTO;
 import br.com.cadastro.repository.ContactRepository;
 import br.com.cadastro.service.ContactService;
+import io.swagger.annotations.ApiOperation;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +25,8 @@ public class ContactController {
     public ContactRepository contactRepository;
 
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ContactDTO> getContactById(@PathVariable Integer id) throws ChangeSetPersister.NotFoundException {
-        ContactDTO contactDTO = contactService.getById(Long.valueOf(id));
 
-        if (contactDTO != null) {
-            return new ResponseEntity<>(contactDTO, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-
+    @ApiOperation("Obtém a lista de contatos")
     @GetMapping
     public ResponseEntity<List<ContactDTO>> getAllContacts(
             @RequestParam(required = false) String q,
@@ -50,7 +41,19 @@ public class ContactController {
         }
     }
 
+    @ApiOperation("Obtém a lista de contatos por Id")
+    @GetMapping("/{id}")
+    public ResponseEntity<ContactDTO> getContactById(@PathVariable Integer id) throws ChangeSetPersister.NotFoundException {
+        ContactDTO contactDTO = contactService.getById(Long.valueOf(id));
 
+        if (contactDTO != null) {
+            return new ResponseEntity<>(contactDTO, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @ApiOperation("Insere uma lista de contatos")
     @PostMapping
     public ResponseEntity<String> createContact(@RequestBody ContactDTO contactDTO) {
         Integer newContactId = contactService.post(contactDTO); // Assumindo que o método save retorna o ID do novo contato
@@ -62,6 +65,7 @@ public class ContactController {
         return ResponseEntity.status(HttpStatus.OK).body(mensagem);
     }
 
+    @ApiOperation("Atualiza um contato por Id")
     @PutMapping("/{id}")
     public ResponseEntity<String> updateContact(@PathVariable Integer id, @RequestBody ContactDTO contactDTO) {
         try {
@@ -73,6 +77,8 @@ public class ContactController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar contato: " + e.getMessage());
         }
     }
+
+    @ApiOperation("Realiza deleção de um contatos")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteContact(@PathVariable Integer id) {
         try {
