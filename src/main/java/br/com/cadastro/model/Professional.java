@@ -35,6 +35,6 @@ public class Professional implements Serializable {
     private Date birth;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "professional")
+    @OneToMany(mappedBy = "professional", fetch = FetchType.LAZY)
     private List<Contact> contacts;
 }

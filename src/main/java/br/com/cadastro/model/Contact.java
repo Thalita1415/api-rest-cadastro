@@ -1,4 +1,7 @@
 package br.com.cadastro.model;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -25,7 +28,9 @@ public class Contact implements Serializable {
 
 
     @ManyToOne
-    @JoinColumn(name = "profissional_id")
+    @JsonInclude(JsonInclude.Include.NON_NULL) // Não incluirá no JSON se for nulo
+    @JsonProperty("professional_id") // Personaliza o nome do campo na serialização JSON
+    @JoinColumn(name = "professional_id")
     private Professional professional;
 
 
@@ -68,4 +73,8 @@ public class Contact implements Serializable {
     public void setProfessional(Professional professional) {
         this.professional = professional;
     }
-}
+
+
+
+    }
+
