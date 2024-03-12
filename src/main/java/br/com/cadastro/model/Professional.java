@@ -34,6 +34,16 @@ public class Professional implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date birth;
 
+    @Column(name = "active")
+    private boolean active = true; // Inicializado como ativo por padrão
+
+    // Getter e Setter para ativo
+
+    // Método para desativar (exclusão lógica)
+    public void inactive() {
+        this.active = false;
+    }
+
     @JsonIgnore
     @OneToMany(mappedBy = "professional", fetch = FetchType.LAZY)
     private List<Contact> contacts;

@@ -4,14 +4,24 @@ import java.util.Date;
 
 public record ProfessionalDTO(
 
-         Long id,
+         Integer id,
          String name,
          String office,
          Date createdDate,
-         Date birth
+         Date birth,
+         Boolean active
 ) {
 
-    public Long getId() {
-        return this.id; // Retorna o campo 'name' do registro ContactDTO
-    }
+    public Integer getId() {return this.id; }
+
+    public String getName() {return this.name;}
+
+    public String getOffice() {return this.office;}
+
+    public Date getCreatedDate() {return this.createdDate;}
+
+    public Date getBirth() {return this.birth;}
+
+
+
 }

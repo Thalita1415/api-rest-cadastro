@@ -131,7 +131,7 @@ public class ContactImpl implements ContactService {
                 // Criar uma instância de Professional a partir do ProfessionalDTO
                 ProfessionalDTO professionalDTO = contactDTO.getProfessional();
                 Professional professional = new Professional();
-                professional.setId(professionalDTO.getId());  // Certifique-se de que você tem um método setId() em Professional
+                professional.setId(Long.valueOf(professionalDTO.getId()));  // Certifique-se de que você tem um método setId() em Professional
                 // Configurar outros atributos conforme necessário
 
                 // Atualizar o campo professional_id
@@ -191,11 +191,12 @@ public class ContactImpl implements ContactService {
         }
 
         return new ProfessionalDTO(
-                professional.getId(),
+                Math.toIntExact(professional.getId()),
                 professional.getName(),
                 professional.getOffice(),
                 professional.getCreatedDate(),
-                professional.getBirth()
+                professional.getBirth(),
+                professional.isActive()
                 // Remova a lista de contatos daqui
         );
     }
