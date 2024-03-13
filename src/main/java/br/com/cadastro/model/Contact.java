@@ -1,11 +1,14 @@
 package br.com.cadastro.model;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import java.io.Serializable;
 import java.util.Date;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "contact")
 public class Contact implements Serializable {
@@ -34,47 +37,5 @@ public class Contact implements Serializable {
     private Professional professional;
 
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Professional getProfessional() {
-        return professional;
-    }
-
-    public void setProfessional(Professional professional) {
-        this.professional = professional;
-    }
-
-
-
-    }
+}
 

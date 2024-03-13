@@ -60,6 +60,7 @@ public class ProfessionalController {
                 .body("Sucesso profissional com id " + generatedId + " cadastrado");
     }
 
+
     @ApiOperation("Atualiza os dados de um profissional")
     @PutMapping("/{id}")
     public ResponseEntity<String> updateProfessional(@PathVariable Integer id, @RequestBody ProfessionalDTO professionalDTO) {

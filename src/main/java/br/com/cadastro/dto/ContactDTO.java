@@ -2,7 +2,6 @@ package br.com.cadastro.dto;
 import java.util.Date;
 
 
-
 public record ContactDTO(
 
         Integer id,

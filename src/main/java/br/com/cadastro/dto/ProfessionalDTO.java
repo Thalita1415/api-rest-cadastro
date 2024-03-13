@@ -1,6 +1,5 @@
 package br.com.cadastro.dto;
 import br.com.cadastro.model.Office;
-
 import java.util.Date;
 
 
@@ -12,8 +11,11 @@ public record ProfessionalDTO(
          Date createdDate,
          Date birth,
          Boolean active
+
+
 ) {
 
+    public boolean isActive() {return active != null && active;}
     public Integer getId() {return this.id; }
 
     public String getName() {return this.name;}
@@ -23,7 +25,5 @@ public record ProfessionalDTO(
     public Date getCreatedDate() {return this.createdDate;}
 
     public Date getBirth() {return this.birth;}
-
-
 
 }

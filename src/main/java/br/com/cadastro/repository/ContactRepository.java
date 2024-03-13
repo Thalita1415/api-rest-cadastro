@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-
 @Repository
 public interface ContactRepository  extends JpaRepository<Contact, Integer> {
-
 
     @Query("SELECT c FROM Contact c LEFT JOIN FETCH c.professional WHERE c.id = :id")
     Optional<Contact> findByIdWithProfessional(@Param("id") Long id);

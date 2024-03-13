@@ -48,7 +48,6 @@ public class ProfessionalImpl implements ProfessionalService {
     }
 
 
-
     @Override
     public ProfessionalDTO getById(Long id) {
         // Busca o profissional pelo ID no repositório com os contatos carregados
@@ -82,8 +81,6 @@ public class ProfessionalImpl implements ProfessionalService {
         );
     }
 
-
-
     @Override
     public Integer post(ProfessionalDTO professionalDTO) {
         Professional professional = new Professional();
@@ -97,8 +94,6 @@ public class ProfessionalImpl implements ProfessionalService {
         return Math.toIntExact(savedProfessional.getId());
     }
 
-
-
     @Override
     public void put(Integer professionalId, ProfessionalDTO professionalDTO) {
         // Verifica se o profissional com o ID fornecido existe
@@ -111,6 +106,7 @@ public class ProfessionalImpl implements ProfessionalService {
             existingProfessional.setOffice(professionalDTO.getOffice());
             existingProfessional.setCreatedDate(professionalDTO.getCreatedDate());
             existingProfessional.setBirth(professionalDTO.getBirth());
+            existingProfessional.setActive(professionalDTO.isActive());
 
             // Salva as alterações no repositório
             professionalRepository.save(existingProfessional);
@@ -124,15 +120,15 @@ public class ProfessionalImpl implements ProfessionalService {
     @Override
     public void delete(Integer professionalId) {
         // Verificar se o contato com o ID fornecido existe
-        Optional<Professional> optionalContact = professionalRepository.findById(professionalId);
+        Optional<Professional> optionalProfessional = professionalRepository.findById(professionalId);
 
-        if (optionalContact.isPresent()) {
+        if (optionalProfessional.isPresent()) {
             // Realizar a exclusão lógica (por exemplo, definir um status de ativo/inativo)
-            Professional existingContact = optionalContact.get();
-            existingContact.setActive(false); // Supondo que você tenha um campo "ativo" na entidade Contact
+            Professional existingProfessional = optionalProfessional.get();
+            existingProfessional.setActive(false); // Supondo que você tenha um campo "ativo" na entidade Contact
 
             // Salvar as alterações no repositório
-            professionalRepository.save(existingContact);
+            professionalRepository.save(existingProfessional);
         } else {
             // Se o contato não for encontrado, lançar uma exceção ou realizar outra ação adequada
             throw new EntityNotFoundException("Contato não encontrado com o ID: " + professionalId);
