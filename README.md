@@ -2,73 +2,73 @@
 
 ## Schema do Banco de Dados
 
-### Tabela `contatos`
+### Tabela `contacts`
 
 Campos:
-- `nome`: Varchar
+- `name`: Varchar
   - Ex.: fixo casa, celular, escritório
-- `contato`: Varchar
+- `contact`: Varchar
 - `created_date`: Date
-- `profissional`: Chave estrangeira com a tabela profissional
+- `professional`: Chave estrangeira com a tabela profissional
 
-### Tabela `profissionais`
+### Tabela `professional`
 
 Campos:
-- `nome`: Varchar
-- `cargo`: Varchar
+- `name`: Varchar
+- `office`: Varchar
   - Valores possíveis: Desenvolvedor, Designer, Suporte, Tester
-- `nascimento`: Date
+- `birth`: Date
 - `created_date`: Date
 
 Mapeamentos:
-- A tabela de contatos deve possuir um mapeamento N para 1 com a tabela profissionais.
+- A tabela de contacts deve possuir um mapeamento N para 1 com a tabela professional.
 
-  `contatos N -> 1 profissionais`
+  `contacts N -> 1 professionals`
 
 ## Endpoints
 
 ### Contacts
 
-- **GET** `/contatos`
+- **GET** `/contacts`
   - **Response:** Lista de contatos com base nos critérios definidos em Params
   - **Params:**
     - `q` - String: Filtro para buscar contatos que contenham o texto em qualquer um de seus atributos
     - `fields` - List<String>: Opcional. Quando presente, apenas os campos listados em fields deverão ser retornados
 
-- **GET** `/contatos/:id`
+- **GET** `/contacts/:id`
   - **Response:** Todos os dados do contato que possui o ID passado na URL
 
-- **POST** `/contatos`
+- **POST** `/contacts`
   - **Body:** Content-type: Json
   - **Response:** Sucesso contato com id {ID} cadastrado
 
-- **PUT** `/contatos/:id`
+- **PUT** `/contacts/:id`
   - **Body:** Content-type: Json
   - **Response:** Sucesso cadastrado alterado
 
-- **DELETE** `/contatos/:id`
+- **DELETE** `/contacts/:id`
   - **Response:** Sucesso contato excluído
 
 ### Profissionais
 
-- **GET** `/profissionais`
+- **GET** `/professionals`
   - **Response:** Lista de profissionais com base nos critérios definidos em Params
   - **Params:**
     - `q` - String: Filtro para buscar profissionais que contenham o texto em qualquer um de seus atributos
     - `fields` - List<String>: Opcional. Quando presente, apenas os campos listados em fields deverão ser retornados
 
-- **GET** `/profissionais/:id`
+- **GET** `/professionals/:id`
   - **Response:** Todos os dados do profissional que possui o ID passado na URL
 
-- **POST** `/profissionais`
+- **POST** `/professionals`
   - **Body:** Content-type: Json
   - **Response:** Sucesso profissional com id {ID} cadastrado
 
-- **PUT** `/profissionais/:id`
+- **PUT** `/professionals/:id`
   - **Body:** Content-type: Json
   - **Response:** Sucesso cadastrado alterado
 
-- **DELETE** `/profissionais/:id`
+- **DELETE** `/professionals/:id`
   - **Response:** Sucesso contato excluído (Importante! Este método deve realizar uma exclusão lógica do registro)
 
 
