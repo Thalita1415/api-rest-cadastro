@@ -70,3 +70,8 @@ Mapeamentos:
 
 - **DELETE** `/profissionais/:id`
   - **Response:** Sucesso contato excluído (Importante! Este método deve realizar uma exclusão lógica do registro)
+
+
+### Autor
+Este projeto foi desenvolvido por [Thalita Gonçalves].
+
