@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "ec2d312f-6a38-43c0-a4e1-b13932ab5767",
+		"name": "Api cadastro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11781801"
+	},
+	"item": [
+		{
+			"name": "PostContacts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Nome do Contato\",\r\n  \"contact\": \"Detalhes de Contato\",\r\n  \"createdDate\": \"2024-03-09T12:00:00Z\",\r\n  \"professional\": {\r\n    \"id\": 252\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteContacts",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/contacts/902",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contacts",
+						"902"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutContacts",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Taaaa\",\r\n  \"contact\": \"Taaa\",\r\n  \"createdDate\": \"2024-03-09T12:00:00Z\",\r\n  \"professional\": {\r\n    \"id\": 1\r\n    // Outros atributos do ProfessionalDTO, se houverem\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/contacts/902",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contacts",
+						"902"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByIdContacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/contacts/702",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contacts",
+						"702"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetContacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/contacts?q=Detalhes de contato&fields=contact",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contacts"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Detalhes de contato"
+						},
+						{
+							"key": "fields",
+							"value": "contact"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

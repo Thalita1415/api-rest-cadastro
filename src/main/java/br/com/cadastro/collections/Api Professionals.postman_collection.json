@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "2e84e674-3fd2-423b-9722-e4d0fb9bca34",
+		"name": "Api Professionals",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11781801"
+	},
+	"item": [
+		{
+			"name": "GetByIdProfessionals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/professionals/202",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professionals",
+						"202"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProfessionals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/professionals?q=DESENVOLVEDOR&fields=office",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professionals"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "DESENVOLVEDOR"
+						},
+						{
+							"key": "fields",
+							"value": "office"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostProfessioals",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Nome do Profissional\",\r\n  \"office\": \"DESENVOLVEDOR\",\r\n  \"createdDate\": \"2024-03-12T10:00:00.000Z\",\r\n  \"birth\": \"1990-01-01\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/professionals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professionals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutProfessionals",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"\",\r\n  \"office\": \"TESTER\",\r\n  \"createdDate\": \"2024-03-12T12:00:00Z\",\r\n  \"birth\": \"1990-01-01\",\r\n  \"active\": true\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/professionals/252",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professionals",
+						"252"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProfessionals",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\":\"1\",\r\n  \"name\": \"DEV\",\r\n  \"office\": \"Nova Função\",\r\n  \"createdDate\": \"2024-03-12T12:00:00Z\",\r\n  \"birth\": \"1990-01-01\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/professionals/202",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professionals",
+						"202"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
